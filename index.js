@@ -9,24 +9,6 @@ const app = express();
 app.use(body_parser.json());
 app.use(cors())
 
-/*
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('ngrok-skip-browser-warning', '1234');
-    next();
- });
-/*
-
- app.all('*',function (req,res,next)
-{
-  res.setHeader('User-Agent', '1232');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('ngrok-skip-browser-warning', '1234');
-
-
-});*/
-
-
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
@@ -40,13 +22,10 @@ app.get("/webkhoo", (req,res) => {
     let challange = req.query["hub.challenge"]
     let token =req.query["hub.verify_token"];
 
+    console.log(challange)
+    console.log(token)
+    console.log(mode)
 
-    console.log(req.header('ngrok-skip-browser-warning'))
-  //  console.log(challange)
-   // console.log(token)
-    
-    //res.set('Content-Type', 'text/plain');
-    //res.set('User-Agent', 'text/plain');
 
     if(mode && token){
         if(mode ==='subcribe' && token===mytoken){
