@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require('cors')
+//const cors = require('cors')
 const body_parser = require("body-parser");
 const axios = require("axios");
 require('dotenv').config();
@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 
 app.use(body_parser.json());
-app.use(cors())
+//app.use(cors())
 
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
@@ -25,6 +25,7 @@ app.get("/webkhoo", (req,res) => {
     console.log(challange)
     console.log(token)
     console.log(mode)
+    console.log("teste")
 
 
     if(mode && token){
