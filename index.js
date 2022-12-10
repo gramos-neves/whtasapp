@@ -25,11 +25,12 @@ app.get("/webkhoo", (req,res) => {
     console.log(challange)
     console.log(token)
     console.log(mode)
-    console.log("teste")
-
+    console.log("teste " + mytoken)
+    
 
     if(mode && token){
-        if(mode ==='subcribe' && token===mytoken){
+        if(mode ==='subscribe' && token===mytoken){
+            
             res.status(200).send(challange);
         }else{
             res.status(403).send("ok")
