@@ -35,7 +35,7 @@ app.get("/webkhoo", (req,res) => {
             res.status(403).send("ok")
         }
     }
-    res.send("ok")
+   // res.send("ok")
 });
 
 
