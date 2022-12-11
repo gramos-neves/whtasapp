@@ -42,6 +42,9 @@ app.get("/webkhoo", (req,res) => {
 
 app.post("/webhook", (req,res) => {
     let body_param = req.body;
+     
+
+    console.log(req.body)
 
     console.log(JSON.stringify(body_param,null,2));
 
@@ -79,4 +82,3 @@ app.post("/webhook", (req,res) => {
 
 
 })
-
