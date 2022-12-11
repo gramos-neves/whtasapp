@@ -49,7 +49,7 @@ app.post("/webhook", (req,res) => {
 
     console.log(JSON.stringify(body_param,null,2));
 
-    /*
+   
     if(body_param.object){
        
        
@@ -82,7 +82,7 @@ app.post("/webhook", (req,res) => {
             }else{
                 res.sendStatus(404)
             }
-    }*/
+    }
    
 
     res.status(200);
