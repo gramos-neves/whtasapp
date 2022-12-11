@@ -45,13 +45,12 @@ app.post("/webhook", (req,res) => {
     let body_param = req.body;
      
 
-    console.log(req.body)
+   // console.log(req.body)
 
     console.log(JSON.stringify(body_param,null,2));
 
    
     if(body_param.object){
-       
        
         if(body_param.entry && body_param.entry[0].changes && 
             body_param.entry[0].changes[0].value.message &&
@@ -61,6 +60,8 @@ app.post("/webhook", (req,res) => {
                 let from = req.body.entry[0].changes[0].value.message[0].from;
                 let msg_body = req.body.entry[0].changes[0].value.message[0].text.body;
            
+                console.log(phon_no_id);
+                console.log(from)
                  
                 axios({
                     method: "POST",
