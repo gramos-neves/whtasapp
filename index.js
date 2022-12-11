@@ -60,8 +60,8 @@ app.post("/webhook", (req,res) => {
                 let from = req.body.entry[0].changes[0].value.message[0].from;
                 let msg_body = req.body.entry[0].changes[0].value.message[0].text.body;
            
-                console.log(phon_no_id);
-                console.log(from)
+                console.log("Phone:" +  phon_no_id);
+                console.log("from"+ from)
                  
                 axios({
                     method: "POST",
