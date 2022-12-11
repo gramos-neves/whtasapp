@@ -72,7 +72,7 @@ app.post("/webhook", async (req,res) => {
                         }
                     },
                     headers: {
-                        "Contemt-Type":"application/json"
+                        "Content-Type":"application/json"
                     }
                 });
              
