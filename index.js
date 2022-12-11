@@ -17,7 +17,7 @@ app.listen(8080, ()=> {
     console.log("webhook is listening 8080")
 })
 
-app.get("/webkhoo", (req,res) => {
+app.get("/webhook", (req,res) => {
     let mode = req.query["hub.mode"];
     let challange = req.query["hub.challenge"]
     let token =req.query["hub.verify_token"];
