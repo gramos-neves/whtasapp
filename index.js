@@ -83,5 +83,5 @@ app.post("/webhook", (req,res) => {
                 res.sendStatus(404)
             }
     }
-   
+    res.sendStatus(200)
 })
