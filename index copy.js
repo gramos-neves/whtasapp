@@ -52,9 +52,9 @@ app.post("/webhook",  (req,res) => {
             body_param.entry[0].changes[0].value.messages &&
             body_param.entry[0].changes[0].value.messages[0]){
 
-                let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
-                let from = body_param.entry[0].changes[0].value.messages[0].from;
-               //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+                let phon_no_id = req.body.entry[0].changes[0].value.metadata.phone_number_id;
+                let from = req.body.entry[0].changes[0].value.messages[0].from;
+                let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
            
                 console.log("Phone:" +  phon_no_id);
                 console.log("from:" + from)
