@@ -12,7 +12,6 @@ app.use(body_parser.json());
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
-
 app.listen(8080, ()=> {
     console.log("webhook is listening 8080")
 })
@@ -38,8 +37,6 @@ app.get("/webhook", (req,res) => {
     }
    // res.send("ok")
 });
-
-
 
 
 app.post("/webhook",  (req,res) => {
@@ -89,3 +86,7 @@ app.post("/webhook",  (req,res) => {
             }
     }
 })
+
+app.get("/", (req, res) => {
+    res.status(200).send("Webhook setup whatsapp API");
+  });
