@@ -12,9 +12,7 @@ app.use(body_parser.json());
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
-const agendas = []
-
-
+var agendas = []
 
 
 app.listen(8080, ()=> {
