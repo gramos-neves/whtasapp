@@ -13,7 +13,7 @@ const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
 const agendas = []
-const agenda = {} 
+
 
 
 
@@ -43,7 +43,7 @@ app.get("/webhook", (req,res) => {
 
 app.post("/webhook", async  (req,res) => {
     let body_param = req.body;
-     
+    const agenda = {} 
  // console.log(req.body)
 // console.log(JSON.stringify(body_param,null,2));
 
@@ -59,7 +59,8 @@ app.post("/webhook", async  (req,res) => {
                 let wamid = body_param.entry[0].changes[0].value.messages?.[0].context.id;
                
                 //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
-           
+              
+
                 console.log(button) 
                 console.log(wamid)
                 console.log("Phone:" +  phon_no_id);
@@ -67,6 +68,13 @@ app.post("/webhook", async  (req,res) => {
                  
              if(button){ 
                 
+               agenda.button = button.text
+               agenda.wamid = wamid
+               agenda.from = from
+               agenda.phon_no_id = phon_no_id
+
+               agendas.push(agenda)
+
               await axios({
                         method: "POST",
                         url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
@@ -96,5 +104,5 @@ app.post("/webhook", async  (req,res) => {
 })
 
 app.get("/", (req, res) => {
-    res.status(200).send("Webhook setup whatsapp API");
+    res.status(200).send(JSON.stringify(agendas));
   });
