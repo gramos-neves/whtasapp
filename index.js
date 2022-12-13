@@ -39,7 +39,7 @@ app.get("/webhook", (req,res) => {
 });
 
 
-app.post("/webhook",  (req,res) => {
+app.post("/webhook", async  (req,res) => {
     let body_param = req.body;
      
  // console.log(req.body)
@@ -62,7 +62,7 @@ app.post("/webhook",  (req,res) => {
                  
              if(button){ 
                 
-                axios({
+              await axios({
                         method: "POST",
                         url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
                         data:{
