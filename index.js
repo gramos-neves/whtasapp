@@ -12,6 +12,11 @@ app.use(body_parser.json());
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
+const agendas = []
+const agenda = {} 
+
+
+
 app.listen(8080, ()=> {
     console.log("webhook is listening 8080")
 })
@@ -21,11 +26,9 @@ app.get("/webhook", (req,res) => {
     let challange = req.query["hub.challenge"]
     let token =req.query["hub.verify_token"];
 
-    console.log(challange)
+    //console.log(challange)
     console.log(token)
     console.log(mode)
-    console.log("teste " + mytoken)
-    
 
     if(mode && token){
         if(mode ==='subscribe' && token===mytoken){
@@ -35,7 +38,6 @@ app.get("/webhook", (req,res) => {
             res.status(403).send("ok")
         }
     }
-   // res.send("ok")
 });
 
 
@@ -54,9 +56,12 @@ app.post("/webhook", async  (req,res) => {
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 let button = body_param.entry[0].changes[0].value.messages?.[0].button;
-               //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
+                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context.id;
+               
+                //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
            
                 console.log(button) 
+                console.log(wamid)
                 console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
                  
