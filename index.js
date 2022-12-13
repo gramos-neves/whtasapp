@@ -104,5 +104,9 @@ app.post("/webhook", async  (req,res) => {
 })
 
 app.get("/", (req, res) => {
+    
+    const agendasNew = agendas;
+    agendas = [] 
+
     res.status(200).send(JSON.stringify(agendas));
   });
