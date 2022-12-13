@@ -69,6 +69,7 @@ app.post("/webhook",  (req,res) => {
                             messaging_product:"whatsapp",
                             recipient_type: "individual",
                             to:from,
+                            type: "text",
                             text:{
                                 body: button.text
                             }
