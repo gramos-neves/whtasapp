@@ -14,7 +14,6 @@ const mytoken=process.env.MYTOKEN
 
 var agendas = []
 
-
 app.listen(8080, ()=> {
     console.log("webhook is listening 8080")
 })
@@ -105,6 +104,7 @@ app.get("/", (req, res) => {
     
     let agendasNew = agendas;
    // agendas = [] 
+   
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
