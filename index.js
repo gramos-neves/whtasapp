@@ -57,10 +57,9 @@ app.post("/webhook", async  (req,res) => {
                
                 //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
               
-
-                console.log(button) 
+                // console.log(button) 
                 console.log(wamid)
-                console.log("Phone:" +  phon_no_id);
+               // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
                  
              if(button){ 
@@ -90,7 +89,6 @@ app.post("/webhook", async  (req,res) => {
                             "Authorization":"Bearer "+token
                         }
                     });*/
-
 
 
                 }
