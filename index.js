@@ -71,7 +71,8 @@ app.post("/webhook", async  (req,res) => {
                agenda.phon_no_id = phon_no_id
 
                agendas.push(agenda)
-
+              
+               /*
               await axios({
                         method: "POST",
                         url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
@@ -88,7 +89,10 @@ app.post("/webhook", async  (req,res) => {
                             "Content-Type":"application/json",
                             "Authorization":"Bearer "+token
                         }
-                    });
+                    });*/
+
+
+
                 }
                 
              
@@ -104,7 +108,7 @@ app.get("/", (req, res) => {
     
     let agendasNew = agendas;
    // agendas = [] 
-   
+
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
