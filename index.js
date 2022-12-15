@@ -103,7 +103,7 @@ app.post("/webhook", async  (req,res) => {
     }
 })
 
-app.get("/", (req, res) => {
+app.get("/listen", (req, res) => {
     
     let agendasNew = agendas;
     agendas = [] 
