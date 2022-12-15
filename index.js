@@ -15,6 +15,7 @@ const mytoken=process.env.MYTOKEN
 var agendas = []
 
 app.listen(8080, ()=> {
+    console.log(agendas)
     console.log("webhook is listening 8080")
 })
 
