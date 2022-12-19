@@ -72,6 +72,8 @@ app.post("/webhook", async  (req,res) => {
 
                agendas.push(agenda)
               
+              console.log(agendas)  
+
                /*
               await axios({
                         method: "POST",
