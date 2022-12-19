@@ -120,13 +120,14 @@ app.get("/listen", (req, res) => {
   function save(content) {
     const contentString = JSON.stringify(content);
     fs.writeFileSync('./data.json',contentString);
-    fs.close
+    fs.close()
 
 }
 
 
 function load(){
     const fileBuffer = fs.readFileSync('./data.json','utf-8');
+    fs.close()
     const contentObj = JSON.parse(fileBuffer);
     return contentObj;
 }
