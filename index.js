@@ -4,6 +4,9 @@ const body_parser = require("body-parser");
 const axios = require("axios");
 require('dotenv').config();
 const fs = require('fs')
+const path = require('path');
+
+const filePath = path.join("/tmp", "data.json");
 
 const app = express();
 
@@ -153,7 +156,7 @@ app.get("/listen", (req, res) => {
 
   function save(content) {
     const contentString = JSON.stringify(content);
-    fs.writeFileSync('./data.json',contentString);
+    fs.writeFileSync(filePath,contentString);
   //  fs.closeSync('./data.json')
 
 }
