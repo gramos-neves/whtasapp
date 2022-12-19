@@ -133,18 +133,9 @@ app.get("/listen", (req, res) => {
     data.push(dataNew)
 
     console.log(data)
-  
- if(fs.existsSync('./data.json')){
-        
-        fs.writeFileSync('./data.json',JSON.stringify(data), (err) => {
-             if(err) throw err;
-
-
-               console.log('arquivo criado');
-       })
-      
-   }
-    
+     
+    save(data)
+     
    res.send("ok")
       
 })
