@@ -3,23 +3,19 @@ const express = require("express");
 const body_parser = require("body-parser");
 const axios = require("axios");
 require('dotenv').config();
-const fs = require('fs')
-const path = require('path');
-
-const filePath = path.join("/tmp", "data.json");
 
 const app = express();
 
 app.use(body_parser.json());
 //app.use(cors())
 
-
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
-//var agendas = []
+var agendas = []
 
 app.listen(8080, ()=> {
+    console.log(agendas)
     console.log("webhook is listening 8080")
 })
 
@@ -58,7 +54,7 @@ app.post("/webhook", async  (req,res) => {
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 let button = body_param.entry[0].changes[0].value.messages?.[0].button;
-                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
+                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context.id;
                
                 //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
               
@@ -69,17 +65,13 @@ app.post("/webhook", async  (req,res) => {
                  
              if(button){ 
                 
-               const agendas = load()
-
                agenda.button = button.text
-               agenda.wamid = wamid.id
+               agenda.wamid = wamid
                agenda.from = from
                agenda.phon_no_id = phon_no_id
 
                agendas.push(agenda)
               
-               save(agendas)
-
                /*
               await axios({
                         method: "POST",
@@ -113,47 +105,8 @@ app.post("/webhook", async  (req,res) => {
 
 app.get("/listen", (req, res) => {
     
-    let agendasNew = load();
-    //agendas = [] 
+    let agendasNew = agendas;
+    agendas = [] 
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
-
-
-
-
-
-
-  app.get('/criar3', (req,res) => {
-      
-    const dataNew = {nome:"teste",age: "25"}
-
-    const data = load()
-
-    data.push(dataNew)
-
-    console.log(data)
-     
-    save(data)
-     
-   res.send("ok")
-      
-})
-
-
-
-
-  function save(content) {
-    const contentString = JSON.stringify(content);
-    fs.writeFileSync(filePath,contentString);
-  //  fs.closeSync('./data.json')
-
-}
-
-
-function load(){
-    const fileBuffer = fs.readFileSync(filePath,'utf-8');
-   // fs.closeSync('./data.json')
-    const contentObj = JSON.parse(fileBuffer);
-    return contentObj;
-}
