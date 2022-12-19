@@ -55,7 +55,7 @@ app.post("/webhook", async  (req,res) => {
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 let button = body_param.entry[0].changes[0].value.messages?.[0].button;
-                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context.id;
+                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
                
                 //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
               
@@ -69,7 +69,7 @@ app.post("/webhook", async  (req,res) => {
                const agendas = load()
 
                agenda.button = button.text
-               agenda.wamid = wamid
+               agenda.wamid = wamid.id
                agenda.from = from
                agenda.phon_no_id = phon_no_id
 
