@@ -12,9 +12,10 @@ app.use(body_parser.json());
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
-//var agendas = []
+var agendas = []
 
 app.listen(8080, ()=> {
+    console.log(agendas)
     console.log("webhook is listening 8080")
 })
 
@@ -64,8 +65,6 @@ app.post("/webhook", async  (req,res) => {
                  
              if(button){ 
                 
-               const agendas = load()
-
                agenda.button = button.text
                agenda.wamid = wamid
                agenda.from = from
@@ -73,8 +72,6 @@ app.post("/webhook", async  (req,res) => {
 
                agendas.push(agenda)
               
-               save(agendas)
-
                /*
               await axios({
                         method: "POST",
@@ -108,23 +105,8 @@ app.post("/webhook", async  (req,res) => {
 
 app.get("/listen", (req, res) => {
     
-    let agendasNew = load();
-    //agendas = [] 
+    let agendasNew = agendas;
+    agendas = [] 
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
-
-
-  function save(content) {
-    const contentString = JSON.stringify(content);
-    fs.writeFileSync('./data.json',contentString);
-    fs.close
-
-}
-
-
-function load(){
-    const fileBuffer = fs.readFileSync('./data.json','utf-8');
-    const contentObj = JSON.parse(fileBuffer);
-    return contentObj;
-}
