@@ -143,8 +143,6 @@ app.get("/listen", (req, res) => {
 
 
 
-
-
   function save(content) {
     const contentString = JSON.stringify(content);
     fs.writeFileSync(filePath,contentString);
@@ -154,7 +152,7 @@ app.get("/listen", (req, res) => {
 
 
 function load(){
-    const fileBuffer = fs.readFileSync('./data.json','utf-8');
+    const fileBuffer = fs.readFileSync(filePath,'utf-8');
    // fs.closeSync('./data.json')
     const contentObj = JSON.parse(fileBuffer);
     return contentObj;
