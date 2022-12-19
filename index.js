@@ -117,6 +117,40 @@ app.get("/listen", (req, res) => {
   });
 
 
+
+
+
+
+  app.get('/criar3', (req,res) => {
+      
+    const dataNew = {nome:"teste",age: "25"}
+
+    const data = load()
+
+    data.push(dataNew)
+
+    console.log(data)
+  
+ if(fs.existsSync('./data.json')){
+        
+        fs.writeFileSync('./data.json',JSON.stringify(data), (err) => {
+             if(err) throw err;
+
+
+               console.log('arquivo criado');
+       })
+      
+   }
+    
+   res.send("ok")
+      
+})
+
+
+
+
+
+
   function save(content) {
     const contentString = JSON.stringify(content);
     fs.writeFileSync('./data.json',contentString);
