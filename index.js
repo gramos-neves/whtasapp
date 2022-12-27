@@ -62,7 +62,7 @@ app.post("/webhook", async  (req,res) => {
                 console.log(wamid)
                // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
-                console.log(msg_body)
+              
                  
              if(button){ 
                 
@@ -100,8 +100,11 @@ app.post("/webhook", async  (req,res) => {
              
                res.sendStatus(200)
            
+            }else if(msg_body){
+                console.log(msg_body.body)
+               res.sendStatus(200)
             }else{
-                res.sendStatus(200)
+               res.sendStatus(200)
             }
     }
 })
