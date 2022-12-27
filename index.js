@@ -100,6 +100,7 @@ app.post("/webhook", async  (req,res) => {
                res.sendStatus(200)
            
             }else if(msg_body){
+                console.log("messagem de digitada")
                 console.log(msg_body.body)
                res.sendStatus(200)
             }else{
