@@ -58,12 +58,12 @@ app.post("/webhook", async  (req,res) => {
                
                 let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
               
-                // console.log(button) 
+    
                 console.log(wamid)
                // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
-                console.log(button)
-                console.log(msg_body)
+               // console.log(button)
+              //  console.log(msg_body)
                  
              if(button){ 
                 
@@ -73,9 +73,7 @@ app.post("/webhook", async  (req,res) => {
                agenda.phon_no_id = phon_no_id
 
                agendas.push(agenda)
-              
-              console.log(agendas)  
-
+             
                /*
               await axios({
                         method: "POST",
