@@ -15,7 +15,7 @@ const mytoken=process.env.MYTOKEN
 var agendas = []
 
 app.listen(8080, ()=> {
-    console.log(agendas)
+   // console.log(agendas)
     console.log("webhook is listening 8080")
 })
 
@@ -96,14 +96,14 @@ app.post("/webhook", async  (req,res) => {
                     });*/
 
 
+                }else if(msg_body){
+                    console.log("messagem de digitada")
+                    console.log(msg_body.body)
+                  // res.sendStatus(200)
                 }
                 
                res.sendStatus(200)
            
-            }else if(msg_body){
-                console.log("messagem de digitada")
-                console.log(msg_body.body)
-               res.sendStatus(200)
             }else{
                res.sendStatus(200)
             }
