@@ -25,12 +25,10 @@ app.get("/webhook", (req,res) => {
     let token =req.query["hub.verify_token"];
 
     //console.log(challange)
-    console.log(token)
-    console.log(mode)
-
-    if(mode && token){
+    //console.log(token)
+   // console.log(mode)
+ if(mode && token){
         if(mode ==='subscribe' && token===mytoken){
-            
             res.status(200).send(challange);
         }else{
             res.status(403).send("ok")
@@ -42,7 +40,7 @@ app.get("/webhook", (req,res) => {
 app.post("/webhook", async  (req,res) => {
     let body_param = req.body;
     const agenda = {} 
- // console.log(req.body)
+
 // console.log(JSON.stringify(body_param,null,2));
 
     if(body_param.object){
@@ -55,10 +53,8 @@ app.post("/webhook", async  (req,res) => {
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 let button = body_param.entry[0].changes[0].value.messages?.[0].button;
                 let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
-               
                 let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
               
-    
                 console.log(wamid)
                // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
@@ -74,8 +70,10 @@ app.post("/webhook", async  (req,res) => {
 
                agendas.push(agenda)
              
-               /*
-              await axios({
+             }else if(msg_body){
+                    console.log("messagem de digitada")
+
+                    await axios({
                         method: "POST",
                         url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
                         data:{
@@ -84,18 +82,15 @@ app.post("/webhook", async  (req,res) => {
                             to:from,
                             type: "text",
                             text:{
-                                body: button.text
+                                body: 'Ação não permitida!'
                             }
                         },
                         headers: {
                             "Content-Type":"application/json",
                             "Authorization":"Bearer "+token
                         }
-                    });*/
+                    })
 
-
-                }else if(msg_body){
-                    console.log("messagem de digitada")
                     console.log(msg_body.body)
                   // res.sendStatus(200)
                 }
