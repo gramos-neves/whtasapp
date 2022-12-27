@@ -56,13 +56,12 @@ app.post("/webhook", async  (req,res) => {
                 let button = body_param.entry[0].changes[0].value.messages?.[0].button;
                 let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
                
-                let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
+                //let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body;
               
                 // console.log(button) 
                 console.log(wamid)
                // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
-                console.log(msg_body)
                  
              if(button){ 
                 
