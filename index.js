@@ -67,7 +67,7 @@ app.post("/webhook", async  (req,res) => {
                agenda.wamid = wamid.id
                agenda.from = from
                agenda.phon_no_id = phon_no_id
-               agenda.body = body_param.object
+               agenda.body = body_param
 
                agendas.push(agenda)
                
