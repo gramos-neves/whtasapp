@@ -70,7 +70,9 @@ app.post("/webhook", async  (req,res) => {
                agenda.body = body_param.object
 
                agendas.push(agenda)
-             
+               
+               console.log(agendas)
+
              }else if(msg_body){
                     console.log("messagem de digitada")
 
