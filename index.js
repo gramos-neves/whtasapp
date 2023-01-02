@@ -57,10 +57,10 @@ app.post("/webhook", async  (req,res) => {
                 switch(expr){
                     case 'text':
                         //let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
-                        let wam_id = body_param.entry[0].changes[0].value.messages?.[0].context;
+                        let wam_id = body_param.entry[0].changes[0].value.messages?.[0].id;
                         console.log(wam_id)
-                       //await acaonaopermitidaNew(from,phon_no_id,wam_id.id)  
-                       await acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitidaNew(from,phon_no_id,wam_id)  
+                      // await acaonaopermitida(from,phon_no_id)  
                         //console.log('text')
                         break;
                     case 'button':
