@@ -97,6 +97,10 @@ app.post("/webhook", async  (req,res) => {
                         acaonaopermitida(from,phon_no_id)  
                         console.log('audio')
                         break;
+                    case 'location':
+                        acaonaopermitida(from,phon_no_id)  
+                        console.log('location')
+                        break;   
                     default:  
                         console.log("default")
                 }   
