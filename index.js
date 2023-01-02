@@ -57,11 +57,8 @@ app.post("/webhook", async  (req,res) => {
                 switch(expr){
                     case 'text':
                         //let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
-                        let wam_id = body_param.entry[0].changes[0].value.messages?.[0].id;
-                        console.log(wam_id)
-                       await acaonaopermitidaNew(from,phon_no_id,wam_id)  
-                      // await acaonaopermitida(from,phon_no_id)  
-                        //console.log('text')
+                        let text_id = body_param.entry[0].changes[0].value.messages?.[0].id;
+                        await acaonaopermitidaNew(from,phon_no_id,text_id)  
                         break;
                     case 'button':
                         let button = body_param.entry[0].changes[0].value.messages?.[0].button;
@@ -78,7 +75,8 @@ app.post("/webhook", async  (req,res) => {
                         //console.log('button')
                         break;
                     case 'sticker':
-                       await acaonaopermitida(from,phon_no_id)  
+                        let sticker_id = body_param.entry[0].changes[0].value.messages?.[0].id; 
+                       await acaonaopermitidaNew(from,phon_no_id,sticker_id)  
                         //console.log('sticker')
                         break;
                     case 'image':
