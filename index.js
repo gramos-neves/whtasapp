@@ -57,7 +57,7 @@ app.post("/webhook", async  (req,res) => {
                 switch(expr){
                     case 'text':
                         //let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
-                        acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitida(from,phon_no_id)  
                         //console.log('text')
                         break;
                     case 'button':
@@ -75,27 +75,27 @@ app.post("/webhook", async  (req,res) => {
                         //console.log('button')
                         break;
                     case 'sticker':
-                        acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitida(from,phon_no_id)  
                         //console.log('sticker')
                         break;
                     case 'image':
-                        acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitida(from,phon_no_id)  
                         //console.log('image')
                         break;   
                     case 'document':
-                        acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitida(from,phon_no_id)  
                         //console.log('document')
                         break;
                     case 'video':
-                        acaonaopermitida(from,phon_no_id)  
+                      await  acaonaopermitida(from,phon_no_id)  
                         //console.log('video')
                         break;
                     case 'audio':
-                        acaonaopermitida(from,phon_no_id)  
+                      await acaonaopermitida(from,phon_no_id)  
                         //console.log('audio')
                         break;
                     case 'location':
-                        acaonaopermitida(from,phon_no_id)  
+                     await  acaonaopermitida(from,phon_no_id)  
                         //console.log('location')
                         break;   
                     default:  
