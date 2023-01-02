@@ -50,7 +50,7 @@ app.post("/webhook", async  (req,res) => {
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
        
-                console.log("from: " + from)
+               // console.log("from: " + from)
                 
                 var expr = body_param.entry[0].changes[0].value.messages?.[0].type;
 
