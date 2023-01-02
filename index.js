@@ -36,7 +36,6 @@ app.get("/webhook", (req,res) => {
     }
 });
 
-
 app.post("/webhook", async  (req,res) => {
     let body_param = req.body;
     const agenda = {} 
@@ -51,52 +50,62 @@ app.post("/webhook", async  (req,res) => {
 
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
-                let button = body_param.entry[0].changes[0].value.messages?.[0].button;
+                
                 let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
-                let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
+                
               
                 console.log(wamid)
-               // console.log("Phone:" +  phon_no_id);
                 console.log("from: " + from)
-               // console.log(button)
-              //  console.log(msg_body)
-                 
-             if(button){ 
                 
-               agenda.button = button.text
-               agenda.wamid = wamid.id
-               agenda.from = from
-               agenda.phon_no_id = phon_no_id
-               agenda.body = body_param
+                var expr = obj.entry[0].changes[0].value.messages?.[0].type;
 
-               agendas.push(agenda)
-               
+                switch(expr){
+                    case 'text':
+                        let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
+                        acaonaopermitida(from,phon_no_id)  
+                     //console.log(msg_body.body)
+                        console.log('text')
+                        break;
+                    case 'button':
+                        let button = body_param.entry[0].changes[0].value.messages?.[0].button;
+                        agenda.button = button.text
+                        agenda.wamid = wamid.id
+                        agenda.from = from
+                        agenda.phon_no_id = phon_no_id
+                        agenda.body = body_param
+         
+                        agendas.push(agenda)
+                        
+                        console.log('button')
+                        break;
+                    case 'sticker':
+                        acaonaopermitida()  
+                        console.log('sticker')
+                        break;
+                    case 'image':
+                        acaonaopermitida()  
+                        console.log('image')
+                        break;   
+                    case 'document':
+                        acaonaopermitida()  
+                        console.log('document')
+                        break;
+                    case 'video':
+                        acaonaopermitida()  
+                        console.log('video')
+                        break;
+                    default:  
+                        console.log("default")
+                }   
+
+             /*        
+             if(button){ 
               // console.log(agendas)
 
              }else if(msg_body){
                     console.log("messagem de digitada")
-
-                    await axios({
-                        method: "POST",
-                        url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
-                        data:{
-                            messaging_product:"whatsapp",
-                            recipient_type: "individual",
-                            to:from,
-                            type: "text",
-                            text:{
-                                body: 'Ação não permitida!'
-                            }
-                        },
-                        headers: {
-                            "Content-Type":"application/json",
-                            "Authorization":"Bearer "+token
-                        }
-                    })
-
-                    console.log(msg_body.body)
-                  // res.sendStatus(200)
-                }
+           
+                }*/
                 
                res.sendStatus(200)
            
@@ -105,6 +114,30 @@ app.post("/webhook", async  (req,res) => {
             }
     }
 })
+
+
+async function acaonaopermitida(from, phon_no_id){
+    await axios({
+        method: "POST",
+        url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
+        data:{
+            messaging_product:"whatsapp",
+            recipient_type: "individual",
+            to:from,
+            type: "text",
+            text:{
+                body: 'Ação não permitida!'
+            }
+        },
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization":"Bearer "+token
+        }
+    })
+
+}
+
+
 
 app.get("/listen", (req, res) => {
     
