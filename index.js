@@ -78,19 +78,19 @@ app.post("/webhook", async  (req,res) => {
                         console.log('button')
                         break;
                     case 'sticker':
-                        acaonaopermitida()  
+                        acaonaopermitida(from,phon_no_id)  
                         console.log('sticker')
                         break;
                     case 'image':
-                        acaonaopermitida()  
+                        acaonaopermitida(from,phon_no_id)  
                         console.log('image')
                         break;   
                     case 'document':
-                        acaonaopermitida()  
+                        acaonaopermitida(from,phon_no_id)  
                         console.log('document')
                         break;
                     case 'video':
-                        acaonaopermitida()  
+                        acaonaopermitida(from,phon_no_id)  
                         console.log('video')
                         break;
                     default:  
