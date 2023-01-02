@@ -1,5 +1,4 @@
 const express = require("express");
-//const cors = require('cors')
 const body_parser = require("body-parser");
 const axios = require("axios");
 require('dotenv').config();
@@ -7,7 +6,7 @@ require('dotenv').config();
 const app = express();
 
 app.use(body_parser.json());
-//app.use(cors())
+
 
 const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
@@ -57,10 +56,9 @@ app.post("/webhook", async  (req,res) => {
 
                 switch(expr){
                     case 'text':
-                        let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
+                        //let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
                         acaonaopermitida(from,phon_no_id)  
-                     //console.log(msg_body.body)
-                        console.log('text')
+                        //console.log('text')
                         break;
                     case 'button':
                         let button = body_param.entry[0].changes[0].value.messages?.[0].button;
@@ -74,54 +72,42 @@ app.post("/webhook", async  (req,res) => {
                         agenda.body = body_param
          
                         agendas.push(agenda)
-                        
-                        console.log('button')
+                        //console.log('button')
                         break;
                     case 'sticker':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('sticker')
+                        //console.log('sticker')
                         break;
                     case 'image':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('image')
+                        //console.log('image')
                         break;   
                     case 'document':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('document')
+                        //console.log('document')
                         break;
                     case 'video':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('video')
+                        //console.log('video')
                         break;
                     case 'audio':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('audio')
+                        //console.log('audio')
                         break;
                     case 'location':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('location')
+                        //console.log('location')
                         break;   
                     default:  
                         console.log("default")
                 }   
 
-             /*        
-             if(button){ 
-              // console.log(agendas)
-
-             }else if(msg_body){
-                    console.log("messagem de digitada")
-           
-                }*/
-                
                res.sendStatus(200)
-           
             }else{
                res.sendStatus(200)
             }
     }
 })
-
 
 async function acaonaopermitida(from, phon_no_id){
     await axios({
@@ -144,10 +130,7 @@ async function acaonaopermitida(from, phon_no_id){
 
 }
 
-
-
 app.get("/listen", (req, res) => {
-    
     let agendasNew = agendas;
     agendas = [] 
 
