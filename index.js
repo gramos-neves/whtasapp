@@ -50,14 +50,10 @@ app.post("/webhook", async  (req,res) => {
 
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
-                
-                let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
-                
-              
-                console.log(wamid)
+       
                 console.log("from: " + from)
                 
-                var expr = obj.entry[0].changes[0].value.messages?.[0].type;
+                var expr = body_param.entry[0].changes[0].value.messages?.[0].type;
 
                 switch(expr){
                     case 'text':
@@ -68,6 +64,9 @@ app.post("/webhook", async  (req,res) => {
                         break;
                     case 'button':
                         let button = body_param.entry[0].changes[0].value.messages?.[0].button;
+                        let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
+
+                        console.log(wamid)
                         agenda.button = button.text
                         agenda.wamid = wamid.id
                         agenda.from = from
