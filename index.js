@@ -95,7 +95,7 @@ app.post("/webhook", async  (req,res) => {
                         break;
                     case 'audio':
                         acaonaopermitida(from,phon_no_id)  
-                        console.log('video')
+                        console.log('audio')
                         break;
                     default:  
                         console.log("default")
