@@ -64,7 +64,7 @@ app.post("/webhook", async  (req,res) => {
                         let button = body_param.entry[0].changes[0].value.messages?.[0].button;
                         let wamid = body_param.entry[0].changes[0].value.messages?.[0].context;
 
-                        console.log(wamid)
+                        //console.log(wamid)
                         agenda.button = button.text
                         agenda.wamid = wamid.id
                         agenda.from = from
