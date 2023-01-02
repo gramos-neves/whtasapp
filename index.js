@@ -57,7 +57,8 @@ app.post("/webhook", async  (req,res) => {
                 switch(expr){
                     case 'text':
                         //let msg_body = req.body.entry[0].changes[0].value.messages?.[0].text;
-                       await acaonaopermitida(from,phon_no_id)  
+                        let wam_id = body_param.entry[0].changes[0].value.messages?.[0].context;
+                       await acaonaopermitidaNew(from,phon_no_id,wam_id.id)  
                         //console.log('text')
                         break;
                     case 'button':
@@ -129,6 +130,32 @@ async function acaonaopermitida(from, phon_no_id){
     })
 
 }
+
+
+async function acaonaopermitidaNew(from, phon_no_id,wam_id){
+    await axios({
+        method: "POST",
+        url:"https://graph.facebook.com/v15.0/"+phon_no_id+"/messages",
+        data:{
+            messaging_product:"whatsapp",
+            context: {
+                message_id: ""+wam_id+""
+              },
+            to:from,
+            type: "text",
+            text:{
+                preview_url: false,
+                body: 'Ação não permitida!'
+            }
+        },
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization":"Bearer "+token
+        }
+    })
+
+}
+
 
 app.get("/listen", (req, res) => {
     let agendasNew = agendas;
