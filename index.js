@@ -52,7 +52,7 @@ app.post("/webhook", async  (req,res) => {
                // console.log("from: " + from)
                
                 var status = !!body_param.entry[0].changes[0].value.statuses
-
+                 console.log(status)   
                 if(status == "true"){
                     console.log("status")
                 }
