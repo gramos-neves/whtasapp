@@ -176,3 +176,12 @@ app.get("/listen", (req, res) => {
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
+
+
+
+  app.get("/status", (req, res) => {
+    let statusNew = arrStatus;
+    arrStatus = [] 
+
+   res.status(200).send(JSON.stringify(statusNew));
+  });
