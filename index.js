@@ -51,13 +51,7 @@ app.post("/webhook", async  (req,res) => {
        
                // console.log("from: " + from)
                
-                var status = !!body_param.entry[0].changes[0].value.statuses
-                 console.log(status)   
-                if(status == "true"){
-                    console.log("status")
-                }
-                
-                var expr = body_param.entry[0].changes[0].value.messages?.[0].type;
+            var expr = body_param.entry[0].changes[0].value.messages?.[0].type;
 
                 switch(expr){
                     case 'text':
@@ -110,6 +104,14 @@ app.post("/webhook", async  (req,res) => {
 
                res.sendStatus(200)
             }else{
+
+                var status = !!body_param.entry[0].changes[0].value.statuses
+                console.log(status)   
+               if(status == "true"){
+                   console.log("status")
+               }
+
+
                res.sendStatus(200)
             }
     }
