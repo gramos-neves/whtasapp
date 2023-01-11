@@ -183,7 +183,7 @@ app.get("/listen", (req, res) => {
     let statusNew = arrStatus;
     arrStatus = [] 
     
-    console.log(statusNew)
+   // console.log(statusNew)
    //res.status(200).send(JSON.stringify(statusNew));
    res.status(200).send(statusNew);
   });
