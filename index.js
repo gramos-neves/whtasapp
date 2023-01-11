@@ -108,7 +108,7 @@ app.post("/webhook", async  (req,res) => {
 
                var status = !!body_param.entry[0].changes[0].value.statuses
                  
-               if(status === "true"){
+               if(status === true){
                    let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                    let from = body_param.entry[0].changes[0].value.statuses[0].recipient_id;
                    let statu = body_param.entry[0].changes[0].value.statuses[0].status;
