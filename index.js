@@ -50,6 +50,12 @@ app.post("/webhook", async  (req,res) => {
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
        
                // console.log("from: " + from)
+               
+                var status = body_param.entry[0].changes[0].value?.statuses
+
+                if(status){
+                    console.log("status")
+                }
                 
                 var expr = body_param.entry[0].changes[0].value.messages?.[0].type;
 
