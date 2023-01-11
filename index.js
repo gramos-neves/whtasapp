@@ -11,6 +11,7 @@ const token=process.env.TOKEN
 const mytoken=process.env.MYTOKEN 
 
 var agendas = []
+var arrStatus =[]
 
 app.listen(8080, ()=> {
    // console.log(agendas)
@@ -105,10 +106,15 @@ app.post("/webhook", async  (req,res) => {
                res.sendStatus(200)
             }else{
 
-                var status = !!body_param.entry[0].changes[0].value.statuses
-                console.log(status)   
+               var status = !!body_param.entry[0].changes[0].value.statuses
+                 
                if(status == "true"){
-                   console.log("status")
+                   let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+                   let from = body_param.entry[0].changes[0].value.statuses[0].recipient_id;
+                   let statu = body_param.entry[0].changes[0].value.statuses[0].status;
+                   
+                   arrStatus.push(body_param.entry[0].changes[0].value)
+                          
                }
 
 
