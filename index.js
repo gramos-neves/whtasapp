@@ -51,9 +51,9 @@ app.post("/webhook", async  (req,res) => {
        
                // console.log("from: " + from)
                
-                var status = body_param.entry[0].changes[0].value?.statuses
+                var status = !!body_param.entry[0].changes[0].value.statuses
 
-                if(!status){
+                if(status == "true"){
                     console.log("status")
                 }
                 
