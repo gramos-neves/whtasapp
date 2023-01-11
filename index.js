@@ -112,7 +112,7 @@ app.post("/webhook", async  (req,res) => {
                    let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                    let from = body_param.entry[0].changes[0].value.statuses[0].recipient_id;
                    let statu = body_param.entry[0].changes[0].value.statuses[0].status;
-                   
+                   console.log(body_param.entry[0].changes[0].value) 
                    arrStatus.push(body_param.entry[0].changes[0].value)
                           
                }
