@@ -25,7 +25,7 @@ app.get("/webhook", (req,res) => {
 
     //console.log(challange)
     //console.log(token)
-   // console.log(mode)
+    // console.log(mode)
  if(mode && token){
         if(mode ==='subscribe' && token===mytoken){
             res.status(200).send(challange);
@@ -80,7 +80,7 @@ app.post("/webhook", async  (req,res) => {
                         //console.log('sticker')
                         break;
                     case 'image':
-                       await acaonaopermitida(from,phon_no_id)  
+                       await acaonaopermitida(from,phon_no_id)
                         //console.log('image')
                         break;   
                     case 'document':
@@ -92,11 +92,11 @@ app.post("/webhook", async  (req,res) => {
                         //console.log('video')
                         break;
                     case 'audio':
-                      await acaonaopermitida(from,phon_no_id)  
+                      await  acaonaopermitida(from,phon_no_id)  
                         //console.log('audio')
                         break;
                     case 'location':
-                     await  acaonaopermitida(from,phon_no_id)  
+                      await  acaonaopermitida(from,phon_no_id)  
                         //console.log('location')
                         break;   
                     default:  
@@ -144,7 +144,6 @@ async function acaonaopermitida(from, phon_no_id){
 
 }
 
-
 async function acaonaopermitidaNew(from, phon_no_id,wam_id){
     await axios({
         method: "POST",
@@ -169,15 +168,12 @@ async function acaonaopermitidaNew(from, phon_no_id,wam_id){
 
 }
 
-
 app.get("/listen", (req, res) => {
     let agendasNew = agendas;
     agendas = [] 
 
    res.status(200).send(JSON.stringify(agendasNew));
   });
-
-
 
   app.get("/status", (req, res) => {
     let statusNew = arrStatus;
